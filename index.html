@@ -20,13 +20,9 @@ position:relative;
 z-index:10;
 }
 
-h1{
-font-size:45px;
-}
+h1{font-size:45px;}
 
-h2{
-font-weight:normal;
-}
+h2{font-weight:normal;}
 
 button{
 padding:15px 30px;
@@ -72,14 +68,22 @@ animation:floatUp linear infinite;
 }
 
 @keyframes floatUp{
-0%{
-transform:translateY(100vh);
-opacity:1;
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
 }
-100%{
-transform:translateY(-10vh);
-opacity:0;
+
+/* kiss image */
+
+#kiss{
+display:none;
+margin-top:20px;
+width:150px;
+animation:pop 0.8s ease;
 }
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
 }
 
 </style>
@@ -118,6 +122,8 @@ opacity:0;
 
 <p id="answer"></p>
 
+<img id="kiss" src="https://media.tenor.com/0AVbKGY_MxMAAAAi/love-kiss.gif">
+
 </div>
 
 </div>
@@ -134,6 +140,7 @@ document.getElementById("proposal").style.display="block";
 
 function yesClick(){
 document.getElementById("answer").innerHTML="💖 Yay! I love you Maalu! 💖";
+document.getElementById("kiss").style.display="block";
 }
 
 /* floating hearts */
@@ -160,7 +167,7 @@ heart.remove();
 
 setInterval(createHeart,300);
 
-/* No button running away */
+/* No button runs away */
 
 const noBtn=document.getElementById("noBtn");
 
