@@ -22,8 +22,6 @@ z-index:10;
 
 h1{font-size:45px;}
 
-h2{font-weight:normal;}
-
 button{
 padding:15px 30px;
 font-size:20px;
@@ -72,7 +70,7 @@ animation:floatUp linear infinite;
 100%{transform:translateY(-10vh);opacity:0;}
 }
 
-/* kiss image */
+/* kiss gif */
 
 #kiss{
 display:none;
@@ -86,6 +84,30 @@ animation:pop 0.8s ease;
 100%{transform:scale(1);}
 }
 
+/* glowing love text */
+
+#forever{
+display:none;
+font-size:40px;
+margin-top:20px;
+font-weight:bold;
+color:#fff;
+text-shadow:0 0 10px #fff,0 0 20px #ff4d6d,0 0 40px #ff1e56;
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+font-size:30px;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0);opacity:1;}
+100%{transform:scale(3);opacity:0;}
+}
+
 </style>
 
 </head>
@@ -93,7 +115,7 @@ animation:pop 0.8s ease;
 <body>
 
 <audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c2c8c1d07.mp3?filename=romantic-love-11786.mp3">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c2c8c1d07.mp3">
 </audio>
 
 <div class="container">
@@ -110,8 +132,6 @@ animation:pop 0.8s ease;
 
 <p>Maalu ❤️</p>
 
-<p>On your special day I want to say something…</p>
-
 <p>You are the most beautiful part of my life ✨</p>
 
 <p>Will you stay with me forever? 💍</p>
@@ -123,6 +143,8 @@ animation:pop 0.8s ease;
 <p id="answer"></p>
 
 <img id="kiss" src="https://media.tenor.com/0AVbKGY_MxMAAAAi/love-kiss.gif">
+
+<div id="forever">Maalu ❤️ Ajay Forever</div>
 
 </div>
 
@@ -136,11 +158,43 @@ function showProposal(){
 document.getElementById("proposal").style.display="block";
 }
 
-/* yes response */
+/* yes click */
 
 function yesClick(){
+
 document.getElementById("answer").innerHTML="💖 Yay! I love you Maalu! 💖";
+
 document.getElementById("kiss").style.display="block";
+
+document.getElementById("forever").style.display="block";
+
+/* fireworks */
+
+for(let i=0;i<30;i++){
+createFirework();
+}
+
+}
+
+/* fireworks animation */
+
+function createFirework(){
+
+const fire=document.createElement("div");
+
+fire.className="firework";
+
+fire.innerHTML="🎆";
+
+fire.style.left=Math.random()*100+"vw";
+fire.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(fire);
+
+setTimeout(()=>{
+fire.remove();
+},1000);
+
 }
 
 /* floating hearts */
@@ -154,7 +208,9 @@ heart.className="heart";
 heart.innerHTML="💖";
 
 heart.style.left=Math.random()*100+"vw";
+
 heart.style.fontSize=(Math.random()*25+10)+"px";
+
 heart.style.animationDuration=(Math.random()*3+4)+"s";
 
 document.body.appendChild(heart);
@@ -167,7 +223,7 @@ heart.remove();
 
 setInterval(createHeart,300);
 
-/* No button runs away */
+/* No button running away */
 
 const noBtn=document.getElementById("noBtn");
 
